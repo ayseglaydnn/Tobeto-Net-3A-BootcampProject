@@ -4,6 +4,8 @@ using Business.Abstracts;
 using Business.Requests.Applicants;
 using Business.Responses.Applicants;
 using Business.Rules;
+using Core.Aspects.Autofac.Logging;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -23,6 +25,7 @@ namespace Business.Concretes
             _applicantBusinessRules = applicantBusinessRules;
         }
 
+        [LogAspect(typeof(MssqlLogger))]
         public IDataResult<AddApplicantResponse> Add(AddApplicantRequest request)
         {
             Applicant applicant = _mapper.Map<Applicant>(request);
