@@ -1,6 +1,5 @@
 using DataAccess;
 using Business;
-using Core.Exceptions.Extensions;
 using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using Business.DependencyResolvers.Autofac;
