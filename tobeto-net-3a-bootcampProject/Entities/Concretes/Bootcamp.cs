@@ -20,5 +20,18 @@ namespace Entities.Concretes
         public virtual BootcampState BootcampState { get; set; }
         public virtual Instructor Instructor { get; set; }
 
+        public Bootcamp(string name, int ınstructorId, DateTime startDate, DateTime endDate, int bootcampStateId):this()
+        {
+            Name = name;
+            InstructorId = ınstructorId;
+            StartDate = startDate;
+            EndDate = endDate;
+            BootcampStateId = bootcampStateId;
+        }
+        public Bootcamp()
+        {
+            Applications = new HashSet<Application>();
+        }
+
     }
 }

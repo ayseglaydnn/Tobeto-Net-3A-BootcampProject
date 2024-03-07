@@ -12,5 +12,14 @@ namespace Entities.Concretes
         //id,name
         public string Name { get; set; }
         public virtual Bootcamp Bootcamp { get; set; }
+        public BootcampState(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+        public BootcampState()
+        {
+
+        }
     }
 }

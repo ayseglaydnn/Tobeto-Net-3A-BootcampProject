@@ -18,5 +18,18 @@ namespace Entities.Concretes
         public virtual Bootcamp? Bootcamp { get; set; }
         public virtual ApplicationState? ApplicationState { get; set; }
 
+        public Application(int id, int applicantId, int bootcampId, int applicationStateId)
+        {
+            Id = id;
+            ApplicantId = applicantId;
+            BootcampId = bootcampId;
+            ApplicationStateId = applicationStateId;
+        }
+
+        public Application()
+        {
+            
+        }
+
     }
 }
