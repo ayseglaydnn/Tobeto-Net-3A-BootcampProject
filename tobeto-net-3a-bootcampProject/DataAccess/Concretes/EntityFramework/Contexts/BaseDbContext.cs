@@ -1,13 +1,8 @@
-﻿using Entities.Concretes;
+﻿using Core.Utilities.Security.Entities;
+using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Concretes.EntityFramework.Contexts
 {
@@ -22,6 +17,9 @@ namespace DataAccess.Concretes.EntityFramework.Contexts
         public DbSet<ApplicationState> ApplicationStates { get; set; }
         public DbSet<Bootcamp> Bootcamps { get; set; }
         public DbSet<BootcampState> BootcampStates { get; set; }
+        public DbSet<Blacklist> Blacklists { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
             : base(dbContextOptions)

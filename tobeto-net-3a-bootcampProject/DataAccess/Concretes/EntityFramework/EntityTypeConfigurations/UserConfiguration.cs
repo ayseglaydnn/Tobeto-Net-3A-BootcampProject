@@ -1,11 +1,11 @@
-﻿using Entities.Concretes;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Utilities.Security.Entities;
 
 namespace DataAccess.Concretes.EntityFramework.EntityTypeConfigurations
 {
@@ -21,10 +21,13 @@ namespace DataAccess.Concretes.EntityFramework.EntityTypeConfigurations
             builder.Property(u => u.DateOfBirth).IsRequired().HasColumnName("DatoOfBirth");
             builder.Property(u => u.NationalIdentity).IsRequired().HasMaxLength(11).HasColumnName("NationalIdentity");
             builder.Property(u => u.Email).IsRequired().HasMaxLength(100).HasColumnName("Email");
-            builder.Property(u => u.Password).IsRequired().HasMaxLength(100).HasColumnName("Password");
+            builder.Property(u => u.PasswordHash).IsRequired().HasColumnName("PasswordHash");
+            builder.Property(u => u.PasswordSalt).IsRequired().HasColumnName("PasswordSalt");
             builder.Property(x => x.CreatedDate).HasColumnName("CreatedDate");
             builder.Property(x => x.UpdatedDate).HasColumnName("UpdatedDate");
             builder.Property(x => x.DeletedDate).HasColumnName("DeletedDate");
+
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Utilities.Security.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Entities.Concretes
         public string Position { get; set; }
 
         public Employee(int id, string userName, string firstName, string lastName, DateTime dateOfBirth, 
-            string nationalIdentity, string email, string password, string position)
+            string nationalIdentity, string email, byte[] passwordHash, byte[] passwordSalt, string position)
         {
             Id = id;
             UserName = userName;
@@ -20,7 +21,8 @@ namespace Entities.Concretes
             DateOfBirth = dateOfBirth;
             NationalIdentity = nationalIdentity;
             Email = email;
-            Password = password;
+            PasswordHash = passwordHash;
+            PasswordSalt = passwordSalt;
             Position = position;
         }
 

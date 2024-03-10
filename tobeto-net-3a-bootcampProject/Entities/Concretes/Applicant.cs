@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Utilities.Security.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Entities.Concretes
         public virtual Blacklist? Blacklist { get; set; }
 
         public Applicant(int id,string userName, string firstName, string lastName, DateTime dateOfBirth, 
-            string nationalIdentity, string email, string password, string about) : this()
+            string nationalIdentity, string email, byte[] passwordHash, byte[] passwordSalt, string about) : this()
         {
             Id = id;
             UserName = userName;
@@ -23,7 +24,8 @@ namespace Entities.Concretes
             DateOfBirth = dateOfBirth;
             NationalIdentity = nationalIdentity;
             Email = email;
-            Password = password;
+            PasswordHash = passwordHash;
+            PasswordSalt = passwordSalt;
             About = about;
         }
         public Applicant()

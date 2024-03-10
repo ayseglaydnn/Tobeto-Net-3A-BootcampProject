@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Utilities.Security.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Entities.Concretes
         public virtual ICollection<Bootcamp> Bootcamps { get; set; }
 
         public Instructor(int id, string userName, string firstName, string lastName, DateTime dateOfBirth, 
-            string nationalIdentity, string email, string password, string companyName) : this()
+            string nationalIdentity, string email, byte[] passwordHash, byte[] passwordSalt, string companyName) : this()
         {
             Id = id;
             UserName = userName;
@@ -22,7 +23,8 @@ namespace Entities.Concretes
             DateOfBirth = dateOfBirth;
             NationalIdentity = nationalIdentity;
             Email = email;
-            Password = password;
+            PasswordHash = passwordHash;
+            PasswordSalt = passwordSalt;
             CompanyName = companyName;
         }
 
