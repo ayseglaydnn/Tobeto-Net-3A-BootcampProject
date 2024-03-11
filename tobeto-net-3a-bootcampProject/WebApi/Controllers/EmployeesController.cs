@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.Dtos.Employee;
+using Business.Dtos.Instructor;
 using Business.Requests.Employees;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +19,10 @@ namespace WebApi.Controllers
             _employeeService = employeeService;
         }
 
-        [HttpPost("Add")]
-        public IActionResult Add(AddEmployeeRequest request)
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(EmployeeRegisterDto employeeRegisterDto)
         {
-            var result = _employeeService.Add(request);
+            var result = await _employeeService.Register(employeeRegisterDto);
             return HandleDataResult(result);
         }
 

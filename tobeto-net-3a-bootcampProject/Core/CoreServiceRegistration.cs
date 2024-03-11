@@ -1,10 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
+using Core.Utilities.Security.JWT;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Core;
 
 public static class CoreServiceRegistration
 {
+    public static IServiceCollection AddCoreModule(this IServiceCollection services)
+    {
+        services.AddTransient<MongoDbLogger>();
+        services.AddTransient<MssqlLogger>();
+        services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddScoped<ITokenHelper, JwtHelper>();
+        return services;
+    }
     public static IServiceCollection AddSubClassesOfType(this IServiceCollection services, Assembly assembly, 
         Type type, Func<IServiceCollection, Type, IServiceCollection>? addWithLifeCycle = null)
     {

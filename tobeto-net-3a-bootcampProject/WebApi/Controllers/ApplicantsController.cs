@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Business.Dtos.Applicant;
 using Business.Requests.Applicants;
 using Core.Utilities.Results;
 using Entities.Concretes;
@@ -17,10 +18,10 @@ namespace WebApi.Controllers
             _applicantService = applicantService;
         }
 
-        [HttpPost("Add")]
-        public IActionResult Add(AddApplicantRequest request)
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(ApplicantRegisterDto applicantRegisterDto)
         {
-            var result = _applicantService.Add(request);
+            var result = await _applicantService.Register(applicantRegisterDto);
             return HandleDataResult(result);
         }
 

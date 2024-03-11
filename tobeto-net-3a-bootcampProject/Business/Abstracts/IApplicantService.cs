@@ -1,17 +1,15 @@
-﻿using Business.Requests.Applicants;
+﻿using Business.Dtos.Applicant;
+using Business.Requests.Applicants;
 using Business.Responses.Applicants;
 using Core.Utilities.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Core.Utilities.Security.JWT;
+
 
 namespace Business.Abstracts
 {
     public interface IApplicantService
     {
-        public IDataResult<AddApplicantResponse> Add(AddApplicantRequest request);
+        Task<DataResult<AccessToken>> Register(ApplicantRegisterDto applicantRegisterDto);
         public IDataResult<UpdateApplicantResponse> Update(UpdateApplicantRequest request);
         public IDataResult<DeleteApplicantResponse> Delete(DeleteApplicantRequest request);
         public IDataResult<List<GetAllApplicantResponse>> GetAll();

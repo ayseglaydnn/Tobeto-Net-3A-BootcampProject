@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.Dtos.Applicant;
+using Business.Dtos.Instructor;
 using Business.Requests.Instructors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +19,10 @@ namespace WebApi.Controllers
             _instructorService = instructorService;
         }
 
-        [HttpPost("Add")]
-        public IActionResult Add(AddInstructorRequest request)
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(InstructorRegisterDto instructorRegisterDto)
         {
-            var result = _instructorService.Add(request);
+            var result = await _instructorService.Register(instructorRegisterDto);
             return HandleDataResult(result);
         }
 
